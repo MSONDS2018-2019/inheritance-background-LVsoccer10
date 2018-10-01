@@ -11,7 +11,7 @@ public class InheritanceDriver {
      */
     public static void main(String[] args) {
 
-        OurArea area = new OurArea(3);
+        OurArea area = new OurArea(2);
 
         // Use our area, and show the window.
         Window window = new Window("Inheritance Lecture");

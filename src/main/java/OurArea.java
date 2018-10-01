@@ -39,25 +39,36 @@ public class OurArea extends Area {
         //* Exercise #1. Setup the tree objects at random locations.
         trees = new Tree[numberOfTrees];
         for (int i = 0; i < numberOfTrees; i++) {
-            trees[i] = new Tree((int) (Math.random() * MAX_TREE_X),
-                    (int) (Math.random() * MAX_TREE_Y),
-                    "images/tree_1.png");
+            trees[i] = new TallTree((int) (Math.random() * MAX_TREE_X),
+                    (int) (Math.random() * MAX_TREE_Y));
         }
+        // set last to tree to be a short tree
+        trees[trees.length - 1] = new ShortTree((int) (Math.random() * MAX_TREE_X),
+                (int) (Math.random() * MAX_TREE_Y));
         //*/
 
         //* Exercise #3. Initialize the tiles.
-        tiles = new int[NUM_TILES_X][NUM_TILES_Y];
+        tiles = new Tile[NUM_TILES_X][NUM_TILES_Y];
         for (int i = 0; i < NUM_TILES_X; i++) {
             for (int j = 0; j < NUM_TILES_Y; j++) {
                 // Example: Default to grass everywhere.
-                tiles[i][j] = GRASS;
+                tiles[i][j] = new Grass(i,j);
 
             }
         }
 
         // Example: Draw two stones at specific locations.
-        tiles[0][0] = STONE;
-        tiles[2][3] = STONE;
+       tiles[0][0] = new Stone(0,0);
+       tiles[8][8] = new Stone(8,8);
+       tiles[1][8] = new Stone(1,8);
+       tiles[2][3] = new Fire(2,3);
+       tiles[2][4] = new Fire(2,4);
+       tiles[2][5] = new Fire(2,5);
+       tiles[2][6] = new Fire(2,6);
+       tiles[2][7] = new Fire(2,7);
+       tiles[8][2] = new Fire(8,2);
+       tiles[9][2] = new Fire(9,2);
+ 
         //*/
     }
 
@@ -75,13 +86,7 @@ public class OurArea extends Area {
         //* Exercise #4. Draw the tiles.
         for (int i = 0; i < NUM_TILES_X; i++) {
             for (int j = 0; j < NUM_TILES_Y; j++) {
-                // when a tile is set to grass draw grass
-                // otherwise draw a stone
-                if (tiles[i][j] == GRASS) {
-                    drawGrass(i, j);
-                } else {
-                    drawStone(i, j);
-                }
+                drawTile(i,j);
             }
         }
     }
