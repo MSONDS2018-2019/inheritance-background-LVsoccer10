@@ -68,15 +68,31 @@ public class OurArea extends Area {
        tiles[2][7] = new Fire(2,7);
        tiles[8][2] = new Fire(8,2);
        tiles[9][2] = new Fire(9,2);
- 
+       tiles[6][0] = new Water(6,0);
+       tiles[6][1] = new Water(6,1);
+       tiles[5][2] = new Water(5,2);
+       tiles[5][3] = new Water(5,3);
+       tiles[5][4] = new Water(5,4);
+       tiles[5][5] = new Water(5,5);
+       tiles[5][6] = new Water(5,6);
+       tiles[5][7] = new Water(5,7);
+       tiles[4][8] = new Water(4,8);
+       tiles[4][9] = new Water(4,9);
+       tiles[4][7] = new Water(4,7);
+       tiles[6][2] = new Water(6,2);
+       
         //*/
-    }
+    } 
+    	   
+    
 
     @Override
     protected void drawTrees() {
         //* Exercise #2. Draw the trees.
         for (int i = 0; i < trees.length; i++) {
-            drawTree(i);
+      
+        	
+        	drawTree(i);
         }
         //*/
     }
