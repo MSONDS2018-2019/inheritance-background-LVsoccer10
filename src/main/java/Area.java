@@ -46,7 +46,7 @@ public class Area extends JPanel {
     /**
      * The area tile map.
      */
-    protected int[][] tiles;
+    protected Tile[][] tiles;
 
     /**
      * The grass and stone images used as the floor texture.
@@ -82,23 +82,12 @@ public class Area extends JPanel {
         setPreferredSize(new Dimension(Window.WIDTH, Window.HEIGHT));
     }
 
-    /**
-     * Draws the grass at the specified tile.
-     * @param i - the row number of the tile
-     * @param j - the column number of the tile
-     */
-    protected void drawGrass(int i, int j) {
-        g2.drawImage(grassImage, null, i * 64, j * 64);
+    protected void drawTile(int i, int j) {
+    	if (tiles != null) {
+    		tiles[i][j].draw(g2);
+    	}
     }
-
-    /**
-     * Draws the stone at the specified tile.
-     * @param i - the row number of the tile
-     * @param j - the column number of the tile position
-     */
-    protected void drawStone(int i, int j) {
-        g2.drawImage(stoneImage, null, i * 64, j * 64);
-    }
+    
 
     /**
      * Draws the specified tree.
@@ -120,7 +109,6 @@ public class Area extends JPanel {
 
         g2 = (Graphics2D) g;
 
-        drawTiles();
         drawTrees();
 
         // Sync for cross-platform smooth rendering.
